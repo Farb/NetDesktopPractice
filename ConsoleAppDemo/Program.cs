@@ -8,7 +8,8 @@ namespace ConsoleAppDemo
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            GenericTest.ShowDemo();
+            //GenericTest.ShowDemo();
+            ReflectionDemo.Show();
         }
     }
 }
