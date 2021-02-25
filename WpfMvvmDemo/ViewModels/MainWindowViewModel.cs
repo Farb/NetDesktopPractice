@@ -40,7 +40,7 @@ namespace WpfMvvmDemo.ViewModels
         public double Result
         {
             get { return result; }
-            set { result = value;); RaisePropertyChanged(nameof(Result)); }
+            set { result = value; RaisePropertyChanged(nameof(Result)); }
         }
 
         public void Add(object parameter)
