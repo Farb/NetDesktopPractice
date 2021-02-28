@@ -18,8 +18,10 @@ namespace WpfAppNetTest
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    internal partial class MainWindow : Window
     {
+        public static string WindowTitle = "山高越小";
+        public static string TextTitle = "水落实处";
         public MainWindow()
         {
             InitializeComponent();
@@ -29,6 +31,12 @@ namespace WpfAppNetTest
         {
             Human human=FindResource("human") as Human;
             MessageBox.Show(human.Child.Name);
+        }
+
+        private void btnShowResource_Click(object sender, RoutedEventArgs e)
+        {
+            string str = FindResource("myString") as string;
+            lblShowResource.Content = str;
         }
     }
 }
