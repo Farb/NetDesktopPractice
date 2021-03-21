@@ -9,7 +9,8 @@ namespace ConsoleAppDemo
         {
             Console.WriteLine("Hello World!");
             //GenericTest.ShowDemo();
-            ReflectionDemo.Show();
+            //ReflectionDemo.Show();
+            MessageAttack.Attack("13606542369");
         }
     }
 }

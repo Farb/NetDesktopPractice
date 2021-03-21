@@ -5,7 +5,11 @@ VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormSharpMapDemo", "WinFormSharpMapDemo\WinFormSharpMapDemo.csproj", "{0AF3C621-C66E-4F09-9864-B0A4F991FC54}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAppDemo", "ConsoleAppDemo\ConsoleAppDemo.csproj", "{742871CD-67F9-410B-AA07-C31B47874E00}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleAppDemo", "ConsoleAppDemo\ConsoleAppDemo.csproj", "{742871CD-67F9-410B-AA07-C31B47874E00}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfAppNetTest", "WpfAppNetTest\WpfAppNetTest.csproj", "{D139A9ED-DFFE-4132-972A-24B4B095CB39}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfMvvmDemo", "WpfMvvmDemo\WpfMvvmDemo.csproj", "{FCB8B991-F76E-4453-85F2-107C3F51FF3E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{742871CD-67F9-410B-AA07-C31B47874E00}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{742871CD-67F9-410B-AA07-C31B47874E00}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{742871CD-67F9-410B-AA07-C31B47874E00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D139A9ED-DFFE-4132-972A-24B4B095CB39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D139A9ED-DFFE-4132-972A-24B4B095CB39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D139A9ED-DFFE-4132-972A-24B4B095CB39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D139A9ED-DFFE-4132-972A-24B4B095CB39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCB8B991-F76E-4453-85F2-107C3F51FF3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCB8B991-F76E-4453-85F2-107C3F51FF3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCB8B991-F76E-4453-85F2-107C3F51FF3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCB8B991-F76E-4453-85F2-107C3F51FF3E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
