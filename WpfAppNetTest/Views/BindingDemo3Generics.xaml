@@ -1,0 +1,25 @@
+﻿<Window x:Class="WpfAppNetTest.Views.BindingDemo3Generics"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfAppNetTest.Views"
+        mc:Ignorable="d"
+        Title="BindingDemo3Generics" Height="277" Width="507">
+    <StackPanel x:Name="stackPanel" Background="LightBlue">
+        <TextBlock Text="Student Id:" FontWeight="Bold" Margin="5"/>
+        <TextBox x:Name="txtSelected" BorderBrush="Black" Margin="5"/>
+        <TextBlock Text="Student List:" FontWeight="Bold" Margin="5"/>
+        <ListBox x:Name="listBoxStudents" Height="110" Margin="5">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Path=Id}" Width="30" Margin="5"></TextBlock>
+                        <TextBlock Text="{Binding Path=Name}" Width="30" Margin="5"></TextBlock>
+                        <TextBlock Text="{Binding Path=Age}" Width="30" Margin="5"></TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </StackPanel>
+</Window>

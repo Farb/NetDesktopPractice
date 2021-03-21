@@ -1,0 +1,35 @@
+﻿<Window x:Class="WpfAppNetTest.Views.BindingDemo1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfAppNetTest.Views"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d"
+        Title="BindingDemo1" Height="450" Width="800">
+    <StackPanel>
+        <StackPanel.Resources>
+            <sys:String x:Key="myString">
+                床前明月光，疑是地上霜。
+                举头望明月，低头思故乡。
+            </sys:String>
+        </StackPanel.Resources>
+        <TextBox x:Name="txtName"></TextBox>
+        <Button x:Name="btnAddName" Click="btnAddName_Click">Add Name</Button>
+        <TextBox Name="txtSlider" Text="{Binding Path=Value,ElementName=slider01,UpdateSourceTrigger=PropertyChanged}" BorderBrush="Black"></TextBox>
+        <Slider x:Name="slider01" Maximum="100" Minimum="0" Margin="5"></Slider>
+        <Label Content="{Binding ElementName=txtName,Path=Text.Length}"></Label>
+        <TextBox Text="{Binding ElementName=txtName,Path=Text[3],Mode=OneWay}" BorderBrush="Black"></TextBox>
+
+        <TextBox x:Name="txtDefaultElement1" BorderBrush="Black" Margin="0,5,0,0"></TextBox>
+        <TextBox x:Name="txtDefaultElement2" BorderBrush="Black"></TextBox>
+        <TextBox x:Name="txtDefaultElement3" BorderBrush="Black"></TextBox>
+
+        <TextBox x:Name="txtGenericElement1" BorderBrush="Black" Margin="0,5,0,0"></TextBox>
+        <TextBox x:Name="txtGenericElement2" BorderBrush="Black"></TextBox>
+        <TextBox x:Name="txtGenericElement3" BorderBrush="Black"></TextBox>
+
+
+        <TextBlock Text="{Binding Path=., Source={StaticResource ResourceKey=myString}}"></TextBlock>
+    </StackPanel>
+</Window>
