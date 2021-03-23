@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -36,8 +37,18 @@ namespace WpfAppNetTest.Views
             //listViewStudents.ItemsSource = dataTable.DefaultView;
 
             //v3
-            listViewStudents.DataContext = dataTable;
-            listViewStudents.SetBinding(ListView.ItemsSourceProperty, new Binding());
+            //listViewStudents.DataContext = dataTable;
+            //listViewStudents.SetBinding(ListView.ItemsSourceProperty, new Binding());
+
+            //v4 使用Linq
+            listViewStudents.ItemsSource = dataTable.Rows.Cast<DataRow>()
+                .Where(row => Convert.ToString(row["Name"]).StartsWith("a"))
+                .Select(r => new StudentVm
+                {
+                    Id=int.Parse(r["Id"].ToString()),
+                    Name=r["Name"].ToString(),
+                    Age=int.Parse(r["Age"].ToString())
+                });
         }
 
         private DataTable Load()
@@ -46,9 +57,9 @@ namespace WpfAppNetTest.Views
             {
                 new StudentVm{Id=1,Name="aaa",Age=30},
                 new StudentVm{Id=2,Name="eee",Age=29},
-                new StudentVm{Id=3,Name="bbb",Age=28},
+                new StudentVm{Id=3,Name="abbb",Age=28},
                 new StudentVm{Id=4,Name="ddd",Age=27},
-                new StudentVm{Id=5,Name="ccc",Age=26},
+                new StudentVm{Id=5,Name="accc",Age=26},
             };
             var dataTable = new DataTable("studentsTable");
             dataTable.Columns.Add("Id", typeof(int));
@@ -57,9 +68,9 @@ namespace WpfAppNetTest.Views
             foreach (var student in students)
             {
                 DataRow row = dataTable.NewRow();
-                row.SetField("Id",student.Id);
-                row.SetField("Name",student.Name);
-                row.SetField("Age",student.Age);
+                row.SetField("Id", student.Id);
+                row.SetField("Name", student.Name);
+                row.SetField("Age", student.Age);
                 dataTable.Rows.Add(row);
             }
             return dataTable;
