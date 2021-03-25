@@ -5,8 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfAppNetTest.Views"
         mc:Ignorable="d"
-        Title="BindingDemo6RelativeSource" Height="450" Width="800">
-    <Grid>
-        
+        Title="BindingDemo6RelativeSource" Height="300" Width="300">
+    <Grid x:Name="g1" Background="Red" Margin="10">
+        <DockPanel x:Name="d1" Background="Orange" Margin="10">
+            <Grid x:Name="g2" Background="Yellow" Margin="10">
+                <DockPanel x:Name="d2" Background="LawnGreen" Margin="10">
+                    <TextBox DockPanel.Dock="Top" x:Name="txt1" Margin="10" Width="80" Height="50" FontSize="24"/>
+                    <TextBox DockPanel.Dock="Left" x:Name="txt2" Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorLevel=2,AncestorType=Grid},Path=Name}" Margin="10" Width="80" Height="50" FontSize="24"/>
+                    <TextBox DockPanel.Dock="Right" x:Name="txt3" Text="{Binding RelativeSource={RelativeSource Mode=Self},Path=Name}" Margin="10" Width="80" Height="50" FontSize="24"/>
+                </DockPanel>
+            </Grid>
+        </DockPanel>
     </Grid>
 </Window>

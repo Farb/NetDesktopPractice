@@ -20,6 +20,12 @@ namespace WpfAppNetTest.Views
         public BindingDemo6RelativeSource()
         {
             InitializeComponent();
+            var rs = new RelativeSource(RelativeSourceMode.FindAncestor);
+            rs.AncestorLevel = 1;
+            rs.AncestorType = typeof(Grid);
+
+            var binding = new Binding("Name") { RelativeSource = rs };
+            txt1.SetBinding(TextBox.TextProperty, binding);
         }
     }
 }
