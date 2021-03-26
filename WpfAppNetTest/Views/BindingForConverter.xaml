@@ -1,0 +1,28 @@
+﻿<Window x:Class="WpfAppNetTest.Views.BindingForConverter"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfAppNetTest.Converter"
+        mc:Ignorable="d"
+        Title="BindingForConverter" Height="400" Width="600">
+    <Window.Resources>
+        <local:CategoryToSourceConverter x:Key="cts"/>
+        <local:StateToNullableBoolConverter x:Key="stbc"/>
+    </Window.Resources>
+    <StackPanel Background="LightBlue">
+        <ListBox x:Name="listBoxPlane" Height="320" Margin="5">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Width="50" Height="50" Source="{Binding Converter={StaticResource cts},Path=Category}"/>
+                        <TextBlock Text="{Binding Path=Name}" Width="60" Margin="80,0"/>
+                        <CheckBox IsThreeState="True" IsChecked="{Binding Converter={StaticResource stbc},Path=State}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Button x:Name="btnLoad" Content="Load" Width="160" Margin="5,0" Click="btnLoad_Click"/>
+        <Button x:Name="btnSave" Content="Save" Width="160" Margin="5,5" Click="btnSave_Click"/>
+    </StackPanel>
+</Window>
