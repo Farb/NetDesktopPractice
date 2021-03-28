@@ -5,10 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfAppNetTest.Views.DependencyProperty"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
-        Title="DpDemo1" Height="135" Width="260">
+        Title="DpDemo1" Height="165" Width="260">
     <StackPanel>
         <TextBox x:Name="txt1" Margin="5" BorderBrush="Black"/>
         <TextBox x:Name="txt2" Margin="5" BorderBrush="Black"/>
         <Button x:Name="btnOk" Height="20" Margin="5" Content="Ok" Click="btnOk_Click"/>
+        <Button x:Name="btnO2" Height="20" Margin="5" Content="Ok2" Click="btnO2_Click"/>
     </StackPanel>
 </Window>
