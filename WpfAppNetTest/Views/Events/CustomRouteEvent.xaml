@@ -1,0 +1,19 @@
+﻿<Window x:Class="WpfAppNetTest.Views.Events.CustomRouteEvent"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfAppNetTest.Control"
+        mc:Ignorable="d"
+        Title="CustomRouteEvent" Height="450" Width="800">
+    <Grid x:Name="grid1" local:TimeButton.ReportTime="ReportTimeHandler">
+        <Grid x:Name="grid2" local:TimeButton.ReportTime="ReportTimeHandler">
+            <Grid x:Name="grid3" local:TimeButton.ReportTime="ReportTimeHandler">
+                <StackPanel x:Name="stackPanel_1" local:TimeButton.ReportTime="ReportTimeHandler">
+                    <ListBox Name="listBox"/>
+                    <local:TimeButton x:Name="btnTime" Width="80" Height="80" Content="报时" local:TimeButton.ReportTime="ReportTimeHandler"></local:TimeButton>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

@@ -2,7 +2,7 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:WpfAppNetTest"
-             StartupUri="Views/Events/BuiltInRoutedEvent01.xaml">
+             StartupUri="Views/Events/CustomRouteEvent.xaml">
     <Application.Resources>
          
     </Application.Resources>
