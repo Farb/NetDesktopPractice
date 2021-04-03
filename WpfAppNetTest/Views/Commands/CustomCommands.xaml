@@ -1,0 +1,16 @@
+﻿<Window x:Class="WpfAppNetTest.Views.Commands.CustomCommands"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:control="clr-namespace:WpfAppNetTest.Control"
+        xmlns:local="clr-namespace:WpfAppNetTest.Commands"
+        mc:Ignorable="d"
+        Title="CustomCommands" Height="250" Width="300">
+    <StackPanel>
+        <local:MyCommandSource x:Name="ctrlClear" Margin="10">
+            <TextBlock Background="LightGreen" FontSize="16" Text="清除" TextAlignment="Center" Width="80"/>
+        </local:MyCommandSource>
+        <control:MiniView x:Name="miniView"/>
+    </StackPanel>
+</Window>
