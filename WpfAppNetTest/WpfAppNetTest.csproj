@@ -8,12 +8,32 @@
 
   <ItemGroup>
     <None Remove="Images\Bomber.png" />
+    <None Remove="Images\Cars\AudiCar.jpg" />
+    <None Remove="Images\Cars\ChuanQiCar.jpg" />
+    <None Remove="Images\Cars\logo\Audi.jpg" />
+    <None Remove="Images\Cars\logo\Bentley.jpg" />
+    <None Remove="Images\Cars\logo\Benz.jpg" />
+    <None Remove="Images\Cars\logo\BMW.jpg" />
+    <None Remove="Images\Cars\logo\ChuanQi.jpg" />
+    <None Remove="Images\Cars\logo\Ferrari.jpg" />
+    <None Remove="Images\Cars\logo\Martin.jpg" />
+    <None Remove="Images\Cars\MartinCar.jpg" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="Images\Bomber.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Images\Cars\AudiCar.jpg" />
+    <Resource Include="Images\Cars\ChuanQiCar.jpg" />
+    <Resource Include="Images\Cars\logo\Audi.jpg" />
+    <Resource Include="Images\Cars\logo\Bentley.jpg" />
+    <Resource Include="Images\Cars\logo\Benz.jpg" />
+    <Resource Include="Images\Cars\logo\BMW.jpg" />
+    <Resource Include="Images\Cars\logo\ChuanQi.jpg" />
+    <Resource Include="Images\Cars\logo\Ferrari.jpg" />
+    <Resource Include="Images\Cars\logo\Martin.jpg" />
+    <Resource Include="Images\Cars\MartinCar.jpg" />
   </ItemGroup>
 
   <ItemGroup>
