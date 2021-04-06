@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Data\MenuData.xml" />
     <None Remove="Images\Bomber.png" />
     <None Remove="Images\Cars\AudiCar.jpg" />
     <None Remove="Images\Cars\ChuanQiCar.jpg" />
@@ -18,9 +19,13 @@
     <None Remove="Images\Cars\logo\Ferrari.jpg" />
     <None Remove="Images\Cars\logo\Martin.jpg" />
     <None Remove="Images\Cars\MartinCar.jpg" />
+    <None Remove="Views\Template\Data.xml" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Data\MenuData.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\Bomber.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
@@ -34,6 +39,9 @@
     <Resource Include="Images\Cars\logo\Ferrari.jpg" />
     <Resource Include="Images\Cars\logo\Martin.jpg" />
     <Resource Include="Images\Cars\MartinCar.jpg" />
+    <Resource Include="Data\Data.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>

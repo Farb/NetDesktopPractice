@@ -1,0 +1,23 @@
+﻿<Window x:Class="WpfAppNetTest.Views.Template.DataTemplateCase4Xml"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfAppNetTest.Views.Template"
+        mc:Ignorable="d"
+        Title="DataTemplateCase4Xml" Height="300" Width="300">
+    <Window.Resources>
+        <!--数据源-->
+        <XmlDataProvider x:Key="ds" Source="/Data/MenuData.xml" XPath="Data/Operation"/>
+        <!--Operation模板-->
+        <HierarchicalDataTemplate DataType="Operation" ItemsSource="{Binding XPath=Operation}">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding XPath=@Name}" Margin="10,0"/>
+                <TextBlock Text="{Binding XPath=@Gesture}" />
+            </StackPanel>
+        </HierarchicalDataTemplate>
+    </Window.Resources>
+    <StackPanel MenuItem.Click="StackPanel_Click">
+        <Menu ItemsSource="{Binding Source={StaticResource ds}}"/>
+    </StackPanel>
+</Window>
