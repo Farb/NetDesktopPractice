@@ -1,0 +1,44 @@
+﻿<Window x:Class="WpfAppNetTest.Views.Template.DataTemplateForGridView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:core="clr-namespace:System.Collections;assembly=mscorlib"
+        xmlns:local="clr-namespace:WpfAppNetTest.Model"
+        mc:Ignorable="d"
+        Title="DataTemplateForGridView" Height="300" Width="300" Background="Orange">
+    <Window.Resources>
+        <!--数据集合-->
+        <core:ArrayList x:Key="stuList">
+            <local:Person Id="1" Name="Jack" Skill="C#" HasJob="True"/>
+            <local:Person Id="2" Name="Muhanmud" Skill="java" HasJob="True"/>
+            <local:Person Id="3" Name="John" Skill="Ruby" HasJob="False"/>
+            <local:Person Id="4" Name="Alice" Skill="VB" HasJob="False"/>
+            <local:Person Id="5" Name="Bob" Skill="C" HasJob="True"/>
+        </core:ArrayList>
+        
+        <!--DataTemplates-->
+        <DataTemplate x:Key="nameDT">
+            <TextBox x:Name="tbName" Text="{Binding Name}" GotFocus="tbName_GotFocus"/>
+        </DataTemplate>
+        <DataTemplate x:Key="skillDT">
+            <TextBox x:Name="tbSkill" Text="{Binding Skill}"/>
+        </DataTemplate>
+        <DataTemplate x:Key="hjDT">
+            <CheckBox x:Name="cbHasJob" IsChecked="{Binding HasJob}"/>
+        </DataTemplate>
+    </Window.Resources>
+    <!--主体布局-->
+    <Grid Margin="5">
+        <ListView x:Name="listViewStudent" ItemsSource="{StaticResource stuList}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id}"/>
+                    <GridViewColumn Header="姓名" CellTemplate="{StaticResource nameDT}"/>
+                    <GridViewColumn Header="技术" CellTemplate="{StaticResource skillDT}"/>
+                    <GridViewColumn Header="已工作" CellTemplate="{StaticResource hjDT}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>
