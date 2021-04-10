@@ -1,0 +1,29 @@
+﻿<Window x:Class="WpfAppNetTest.Views.Drawings.EllipseDemo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfAppNetTest.Views.Drawings"
+        mc:Ignorable="d"
+        Title="EllipseDemo" Height="200" Width="200">
+    <Grid>
+        <Ellipse Width="140" Height="140" Stroke="Gray" Cursor="Hand" ToolTip="a ball">
+            <Ellipse.Fill>
+                <RadialGradientBrush GradientOrigin="0.2,0.8" RadiusX="0.75" RadiusY="0.75">
+                    <RadialGradientBrush.RelativeTransform>
+                        <TransformGroup>
+                            <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                            <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                            <RotateTransform Angle="90" CenterY="0.5" CenterX="0.5"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </RadialGradientBrush.RelativeTransform>
+                    <GradientStop Color="White" Offset="0"/>
+                    <GradientStop Color="#FF444444" Offset="0.6"/>
+                    <GradientStop Color="#FF999999" Offset="1"/>
+
+                </RadialGradientBrush>
+            </Ellipse.Fill>
+        </Ellipse>
+    </Grid>
+</Window>
