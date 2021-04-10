@@ -1,0 +1,23 @@
+﻿<Window x:Class="WpfAppNetTest.Views.Drawings.VisualBrushDemo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfAppNetTest.Views.Drawings"
+        mc:Ignorable="d"
+        Title="VisualBrushDemo" Height="300" Width="400" Background="Orange">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="160"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="160"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel x:Name="leftStack" Background="White">
+            <Button x:Name="realBtn" Content="OK" Height="40"/>
+        </StackPanel>
+        <Button Content=">>" Grid.Column="1" Click="Button_Click"/>
+        <StackPanel Grid.Column="2" x:Name="rightStack" Background="Wheat">
+            
+        </StackPanel>
+    </Grid>
+</Window>

@@ -19,6 +19,7 @@
     <None Remove="Images\Cars\logo\Ferrari.jpg" />
     <None Remove="Images\Cars\logo\Martin.jpg" />
     <None Remove="Images\Cars\MartinCar.jpg" />
+    <None Remove="Images\Logo.png" />
     <None Remove="Views\Template\Data.xml" />
   </ItemGroup>
 
@@ -42,6 +43,7 @@
     <Resource Include="Data\Data.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Images\Logo.png" />
   </ItemGroup>
 
   <ItemGroup>

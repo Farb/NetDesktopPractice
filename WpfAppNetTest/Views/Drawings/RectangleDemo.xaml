@@ -1,0 +1,80 @@
+﻿<Window x:Class="WpfAppNetTest.Views.Drawings.RectangleDemo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfAppNetTest.Views.Drawings"
+        mc:Ignorable="d"
+        Title="RectangleDemo" Width="600" Height="390">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="160"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="160"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="180"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="180"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="180"/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+        <!--实心填充-->
+        <Rectangle Stroke="Black" Fill="LightBlue"/>
+        <!--线性渐变填充-->
+        <Rectangle Grid.Column="2">
+            <Rectangle.Fill>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#ffb6f9f1" Offset="0"/>
+                    <GradientStop Color="#ff0082bd" Offset="0.25"/>
+                    <GradientStop Color="#ff95deff" Offset="0.6"/>
+                    <GradientStop Color="#ff004f72" Offset="1"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        
+        <!--径向渐变-->
+        <Rectangle Grid.Column="4">
+            <Rectangle.Fill>
+                <RadialGradientBrush>
+                    <GradientStop Color="#ffb6f9f1" Offset="0"/>
+                    <GradientStop Color="#ff0082bd" Offset="0.25"/>
+                    <GradientStop Color="#ff95deff" Offset="0.6"/>
+                    <GradientStop Color="#ff004f72" Offset="1"/>
+                </RadialGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <!--图片填充-->
+        <Rectangle Grid.Row="2">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="/Images/Logo.png" Viewport="0,0,0.2,0.2" TileMode="Tile"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        
+        <!--矢量图填充-->
+        <Rectangle Grid.Column="2" Grid.Row="2">
+            <Rectangle.Fill>
+                <DrawingBrush Viewport="0,0,0.2,0.2" TileMode="Tile">
+                    <DrawingBrush.Drawing>
+                        <GeometryDrawing Brush="LightBlue">
+                            <GeometryDrawing.Geometry>
+                                <EllipseGeometry RadiusY="10" RadiusX="10"/>
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                    </DrawingBrush.Drawing>
+                </DrawingBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+            
+        <!--无填充，用线性渐变填充边线-->
+        <Rectangle Grid.Column="4" Grid.Row="2" StrokeThickness="10">
+            <Rectangle.Stroke>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="Red" Offset="0.3"/>
+                    <GradientStop Color="Green" Offset="0.6"/>
+                </LinearGradientBrush>
+            </Rectangle.Stroke>
+        </Rectangle>
+    </Grid>
+</Window>
