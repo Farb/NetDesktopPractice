@@ -36,15 +36,22 @@ namespace WpfAppNetTest.Views.Animations
             //指定起点,如果不指定起点，则起点就是当前位置
             //doubleX.From = 0d;
             //doubleY.From = 0;
-
+            //设置反弹
+            var bounceEase = new BounceEase();
+            bounceEase.Bounces = 3;//反弹次数
+            bounceEase.Bounciness = 3;//弹性程度，值越大反弹越低
+            doubleY.EasingFunction = bounceEase;
             //指定终点
-            doubleX.To = _random.NextDouble() * 300;
-            doubleY.To = _random.NextDouble() * 300;
-            doubleW.To = _random.NextDouble() * 300;
-            doubleH.To = _random.NextDouble() * 300;
+            //doubleX.To = _random.NextDouble() * 300;
+            //doubleY.To = _random.NextDouble() * 300;
+            doubleX.To = 300;
+            doubleY.To = 300;
+            //缩放
+            //doubleW.To = _random.NextDouble() * 300;
+            //doubleH.To = _random.NextDouble() * 300;
 
             //指定持续时间
-            var duration = new Duration(TimeSpan.FromMilliseconds(300));
+            var duration = new Duration(TimeSpan.FromMilliseconds(2000));
             doubleX.Duration = duration;
             doubleY.Duration = duration;
             doubleW.Duration = duration;
