@@ -1,0 +1,68 @@
+﻿<Window x:Class="WpfAppNetTest.Views.Animations.StoryboardWithXaml"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfAppNetTest.Views.Animations"
+        mc:Ignorable="d"
+        Title="StoryboardWithXaml" Height="450" Width="800">
+    <Grid Margin="6">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="38"/>
+            <RowDefinition Height="38"/>
+            <RowDefinition Height="38"/>
+            <RowDefinition Height="38"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="66"/>
+        </Grid.ColumnDefinitions>
+        <!--红跑道-->
+        <Border BorderBrush="Gray" BorderThickness="1">
+            <Ellipse x:Name="ballRed" Height="32" Width="32" Fill="Red" VerticalAlignment="Center" HorizontalAlignment="Left">
+                <Ellipse.RenderTransform>
+                    <TranslateTransform x:Name="ttRed"/>
+                </Ellipse.RenderTransform>
+            </Ellipse>
+        </Border>
+        <!--绿跑道-->
+        <Border BorderBrush="Gray" BorderThickness="1" Grid.Row="1">
+            <Ellipse x:Name="ballGreen" Height="32" Width="32" Fill="LawnGreen" VerticalAlignment="Center" HorizontalAlignment="Left">
+                <Ellipse.RenderTransform>
+                    <TranslateTransform x:Name="ttGreen"/>
+                </Ellipse.RenderTransform>
+            </Ellipse>
+        </Border>
+        <!--蓝跑道-->
+        <Border BorderBrush="Gray" BorderThickness="1" Grid.Row="2">
+            <Ellipse x:Name="ballBlue" Height="32" Width="32" Fill="Blue" VerticalAlignment="Center" HorizontalAlignment="Left">
+                <Ellipse.RenderTransform>
+                    <TranslateTransform x:Name="ttBlue"/>
+                </Ellipse.RenderTransform>
+            </Ellipse>
+        </Border>
+
+        <Button x:Name="btnGo" Content="Go!" Grid.Column="1" Grid.RowSpan="3">
+            <Button.Triggers>
+                <EventTrigger RoutedEvent="Button.Click">
+                    <BeginStoryboard>
+                        <Storyboard Duration="0:0:1">
+                            <!--红色小球-->
+                            <DoubleAnimation To="400" Storyboard.TargetName="ttRed" Storyboard.TargetProperty="X"></DoubleAnimation>
+                        
+                            <!--绿色小球-->
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ttBlue" Storyboard.TargetProperty="X">
+                                <SplineDoubleKeyFrame Value="400" KeySpline="1,0,0,1"/>
+                            </DoubleAnimationUsingKeyFrames>
+
+                            <!--蓝色小球-->
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ttGreen" Storyboard.TargetProperty="X">
+                                <SplineDoubleKeyFrame Value="400" KeySpline="0,1,1,0"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Button.Triggers>
+        </Button>
+    </Grid>
+</Window>
