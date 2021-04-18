@@ -1,13 +1,76 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConsoleAppDemo.Problems.Easy
 {
     class EasyProblems
     {
+        //1470. 重新排列数组
+        public int[] Shuffle(int[] nums, int n)
+        {
+            var newNums = new int[2 * n];
+            for (int i = 0, j = n; i < n; i++, j++)
+            {
+                newNums[2 * i] = nums[i];
+                newNums[2 * i + 1] = nums[j];
+            }
+            return newNums;
+        }
+        //5734. 判断句子是否为全字母句
+        public bool CheckIfPangram(string sentence)
+        {
+            int alphabetCount = 26;
+            var results = new bool[alphabetCount];
+            foreach (var c in sentence)
+            {
+                results[c - 'a'] = true;
+            }
+            return results.Count(r => r) == alphabetCount;
+        }
+        //26. 删除有序数组中的重复项  V2
+        public int RemoveDuplicatesV2(int[] nums)
+        {
+            if (nums.Length <= 0) return 0;
+            //fast 快指针  ，slow 慢指针
+            int fast, slow;
+            for (fast = 1, slow = 0; fast < nums.Length; fast++)
+            {
+                if (nums[fast] != nums[slow])
+                {
+                    nums[slow + 1] = nums[fast];
+                    slow++;
+                }
+            }
+            return slow + 1;
+        }
+        //26. 删除有序数组中的重复项
+        public int RemoveDuplicates(int[] nums)
+        {
+            if (nums.Length <= 0) return 0;
+            //fast 快指针  ，slow 慢指针
+            int fast, slow;
+            for (fast = 1, slow = 1; fast < nums.Length; fast++)
+            {
+                if (nums[fast] != nums[fast - 1])
+                {
+                    nums[slow] = nums[fast];
+                    slow++;
+                }
+            }
+            return slow + 1;
+        }
+        //1431. 拥有最多糖果的孩子
+        public IList<bool> KidsWithCandies(int[] candies, int extraCandies)
+        {
+            var res = new List<bool>(candies.Length);
+            int max = candies.Max();
+            foreach (var candy in candies)
+            {
+                res.Add(candy + extraCandies > max);
+            }
+            return res;
+        }
+
         //1512. 好数对的数目
         public int NumIdenticalPairs(int[] nums)
         {
@@ -82,7 +145,7 @@ namespace ConsoleAppDemo.Problems.Easy
             int richest = 0;
             for (int i = 0; i < accounts.Length; i++)
             {
-                int temp= accounts[i].Sum();
+                int temp = accounts[i].Sum();
                 if (temp > richest)
                     richest = temp;
             }

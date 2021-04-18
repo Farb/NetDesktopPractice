@@ -1,4 +1,6 @@
-﻿using ConsoleAppDemo.DataStructure;
+﻿using ConsoleAppDemo.BitCompute;
+using ConsoleAppDemo.DataStructure;
+using ConsoleAppDemo.HwOd;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,11 +12,27 @@ namespace ConsoleAppDemo
         static void Main(string[] args)
         {
 
-            var leftSpin = new LeftSpin();
-            leftSpin.ReverseLeftWords("abcdefg", 2);
+            HwOdTest.PrintArray();
 
+            //HwOdTest.SortSize();
 
+            //var res= HwOdTest.ConcatUrl("abc/,/bdd");
+            //Console.WriteLine(res== "abc/bdd");
 
+            //int[] arr1 = { 1,2,3,7};
+            //var b1= HwOdTest.IsExistInArray(arr1,7,3,2);
+            //Console.WriteLine($"验证成功：{b1==true}");
+            //var b2 = HwOdTest.IsExistInArray(new int[] { }, 7, 3, 2);
+            //Console.WriteLine($"验证成功：{b2 == false}");
+            //var b3 = HwOdTest.IsExistInArray(new int[] { 0,0,0}, 7, 3, 2);
+            //Console.WriteLine($"验证成功：{b3 == false}");
+            //var b4 = HwOdTest.IsExistInArray(arr1, 3, 1, 1);
+            //Console.WriteLine($"验证成功：{b4 == true}");
+
+            //var bd = new BitDemo();//4,1,4,6  //1, 2, 5, 2
+            //var res= bd.SingleNumbers(new[] { 4, 1, 4, 6 });
+            //var leftSpin = new LeftSpin();
+            //leftSpin.ReverseLeftWords("abcdefg", 2);
         }
         public static int StrToInt(string str)
         {
