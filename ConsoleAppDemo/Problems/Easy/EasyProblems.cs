@@ -5,6 +5,22 @@ namespace ConsoleAppDemo.Problems.Easy
 {
     class EasyProblems
     {
+        //27. 移除元素
+        public int RemoveElement(int[] nums, int val)
+        {
+            if (nums.Length <= 0) return 0;
+            //快指针每次遍历一个元素，慢指针指向被移除的元素
+            int fast = 0, slow = 0;
+            for (fast = 0, slow = 0; fast < nums.Length; fast++)
+            {
+                if (val!=nums[fast])
+                {
+                    nums[slow] = nums[fast];
+                    slow++;
+                }
+            }
+            return slow;
+        }
         //1470. 重新排列数组
         public int[] Shuffle(int[] nums, int n)
         {
