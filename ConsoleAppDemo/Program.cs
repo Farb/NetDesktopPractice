@@ -1,6 +1,8 @@
 ﻿using ConsoleAppDemo.BitCompute;
 using ConsoleAppDemo.DataStructure;
 using ConsoleAppDemo.HwOd;
+using ConsoleAppDemo.Problems.Easy;
+using ConsoleAppDemo.Search;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,8 +13,13 @@ namespace ConsoleAppDemo
     {
         static void Main(string[] args)
         {
+            var sd = new SearchDemo();
+            var sum = sd.MovingCount(1, 2, 1);
+            //var b= sd.Exist(new char[][] { new char[] { 'a'} },"ab");
 
-            HwOdTest.PrintArray();
+            var easy = new EasyProblems();
+            //int index= easy.StrStr("mississippi", "issip");
+            //HwOdTest.PrintArray();
 
             //HwOdTest.SortSize();
 

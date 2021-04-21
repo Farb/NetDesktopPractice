@@ -1,10 +1,142 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace ConsoleAppDemo.Problems.Easy
 {
     class EasyProblems
     {
+        //91. 解码方法
+        public int NumDecodings(string s)
+        {
+            if (s[0] == '0') return 0;//很明显，如果首位为0，则无法解码
+
+            //dp[-1] = dp[0] = 1,解释dp[0]=1好理解，一个!0数字就只有1种解法；
+            /*
+             * dp[-1]=1直接看很难理解；但是可以推算，比如第2位为0，那么第1位只能为1或2才能解码，因为dp[i]=dp[i-2],
+             *此时，应该只有1种解法，即dp[1]=1,所以dp[1]=dp[-1]=1。或者可以理解为没有元素时只有一种解法，那就是没有解法。（玄学，个人理解）
+             */
+            int pre = 1, curr = 1;
+            for (int i = 1; i < s.Length; i++)
+            {
+                int tmp = curr;//记录当前解法数量
+                if (s[i] == '0')//如果当前为0，则前一个数字必须为1或2，否则无法解码（如00,30等），返回0
+                {
+                    //dp[i]=dp[i-2];解释第i-1位和第i位必须看做一个整体才能解码，故解码方法和第i-2位的解码方法相同
+                    if (s[i - 1] == '1' || s[i - 1] == '2')
+                        curr = pre;
+                    else return 0;
+                }
+                //如果前1位为1，则dp[i]=dp[i-1]+dp[i-2]; 解释：s[i-1]和s[i]分开译码为dp[i-1]；合在一起译码为dp[i-2]
+                //或者如果前1位为2，且当前位为1-6 ，则dp[i]=dp[i-1]+dp[i-2]; 解释同上
+                else if (s[i - 1] == '1' || (s[i - 1] == '2' && '1' <= s[i] && s[i] <= '6'))
+                {
+                    curr = curr + pre;
+                }
+                pre = tmp;
+            }
+            return curr;
+        }
+        //1678. 设计 Goal 解析器
+        public string Interpret(string command)
+        {
+            var sb = new StringBuilder();
+            for (int i = 0; i < command.Length; i++)
+            {
+                if (command[i] == 'G')
+                    sb.Append('G');
+                else
+                {
+                    if (command[i++] == '(' && command[i] == ')')
+                        sb.Append('o');
+                    else
+                    {
+                        sb.Append("al");
+                        i += 2;
+                    }
+                }
+            }
+            return sb.ToString();
+        }
+        //LCP 06. 拿硬币
+        public int MinCount(int[] coins)
+        {
+            int sum = 0;
+            int coinsCount = 0;
+            for (int i = 0; i < coins.Length; i++)
+            {
+                coinsCount = coins[i];
+                sum += (coinsCount % 2 == 0) ? coinsCount / 2 : coinsCount / 2 + 1;
+            }
+            return sum;
+        }
+        //1773. 统计匹配检索规则的物品数量
+        public int CountMatches(IList<IList<string>> items, string ruleKey, string ruleValue)
+        {
+            int index = -1;
+            switch (ruleKey)
+            {
+                case "type":
+                    index = 0;
+                    break;
+                case "color":
+                    index = 1;
+                    break;
+                case "name":
+                    index = 2;
+                    break;
+            }
+            int sum = 0;
+            foreach (var item in items)
+            {
+                sum += (item[index] == ruleValue) ? 1 : 0;
+            }
+            return sum;
+        }
+        //1720. 解码异或后的数组
+        public int[] Decode(int[] encoded, int first)
+        {
+            int[] arr = new int[encoded.Length + 1];
+            arr[0] = first;
+            for (int i = 1; i < arr.Length; i++)
+            {
+                arr[i] = encoded[i - 1] ^ arr[i - 1];
+            }
+            return arr;
+        }
+        public string DefangIPaddr(string address)
+        {
+            //return address.Replace(".", "[.]");
+            var sb = new StringBuilder(address.Length);
+            foreach (var c in address)
+            {
+                if (c == '.')
+                    sb.Append("[.]");
+                else
+                    sb.Append(c);
+            }
+            return sb.ToString();
+        }
+        //28. 实现 strStr()
+        public int StrStr(string haystack, string needle)
+        {
+            if (needle.Trim().Length <= 0) return 0;
+            int fast, slow, k = 0;
+            for (fast = 0, slow = 0; fast < haystack.Length; fast++)
+            {
+                if (haystack[fast] != needle[k])
+                {
+                    fast = slow;
+                    slow++;
+                    k = 0;
+                }
+                else
+                    k++;
+                if (k == needle.Length)
+                    return slow;
+            }
+            return -1;
+        }
         //27. 移除元素
         public int RemoveElement(int[] nums, int val)
         {
@@ -13,7 +145,7 @@ namespace ConsoleAppDemo.Problems.Easy
             int fast = 0, slow = 0;
             for (fast = 0, slow = 0; fast < nums.Length; fast++)
             {
-                if (val!=nums[fast])
+                if (val != nums[fast])
                 {
                     nums[slow] = nums[fast];
                     slow++;
