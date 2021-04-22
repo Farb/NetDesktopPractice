@@ -14,10 +14,11 @@ namespace ConsoleAppDemo
         static void Main(string[] args)
         {
             var sd = new SearchDemo();
-            var sum = sd.MovingCount(1, 2, 1);
+            //var sum = sd.MovingCount(1, 2, 1);
             //var b= sd.Exist(new char[][] { new char[] { 'a'} },"ab");
 
             var easy = new EasyProblems();
+            easy.CreateTargetArray(new []{ 0, 1, 2, 3, 4 },new []{ 0, 1, 2, 2, 1 });
             //int index= easy.StrStr("mississippi", "issip");
             //HwOdTest.PrintArray();
 

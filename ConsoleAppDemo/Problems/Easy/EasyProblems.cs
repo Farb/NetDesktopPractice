@@ -6,6 +6,29 @@ namespace ConsoleAppDemo.Problems.Easy
 {
     class EasyProblems
     {
+        //1389. 按既定顺序创建目标数组
+        public int[] CreateTargetArray(int[] nums, int[] index)
+        {
+            var list = new List<int>(nums.Length);
+            for (int i = 0; i < nums.Length; i++)
+            {
+                list.Insert(index[i], nums[i]);
+            }
+            return list.ToArray();
+        }
+        //1281. 整数的各位积和之差
+        public int SubtractProductAndSum(int n)
+        {
+            int multiply = 1,sum=0,tmp=0;
+            while (n>0)
+            {
+                tmp=n % 10;
+                n /= 10;
+                multiply *= tmp;
+                sum += tmp;
+            }
+            return multiply - sum;
+        }
         //91. 解码方法
         public int NumDecodings(string s)
         {
