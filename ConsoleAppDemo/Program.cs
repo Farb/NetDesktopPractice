@@ -1,5 +1,6 @@
 ﻿using ConsoleAppDemo.BitCompute;
 using ConsoleAppDemo.DataStructure;
+using ConsoleAppDemo.DoublePointer;
 using ConsoleAppDemo.HwOd;
 using ConsoleAppDemo.Problems.Easy;
 using ConsoleAppDemo.Search;
@@ -13,6 +14,8 @@ namespace ConsoleAppDemo
     {
         static void Main(string[] args)
         {
+            var dp = new DoublePointers();
+            var nums = dp.Exchange(new[] {2, 2, 3, 4});
             var sd = new SearchDemo();
             //var sum = sd.MovingCount(1, 2, 1);
             //var b= sd.Exist(new char[][] { new char[] { 'a'} },"ab");
