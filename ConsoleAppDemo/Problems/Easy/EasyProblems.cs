@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
@@ -6,6 +7,61 @@ namespace ConsoleAppDemo.Problems.Easy
 {
     class EasyProblems
     {
+        //1365. 有多少小于当前数字的数字
+        public int[] SmallerNumbersThanCurrent(int[] nums)
+        {
+            //v1 暴力破解
+            int length = nums.Length;
+            int[] res = new int[length];
+            //for (int i = 0; i < length; i++)
+            //{
+            //    int count = 0;
+            //    for (int j = 0; i!=j&&j < length; j++)
+            //    {
+            //        if (i == j) continue;
+            //        if (nums[i] > nums[j])
+            //            count++;
+            //    }
+            //    res[i] = count;
+            //}
+
+            //v2 词频统计
+            var dict = new Dictionary<int, int>();
+            foreach (var n in nums)
+            {
+                if (!dict.ContainsKey(n))
+                    dict.Add(n, 1);
+                else
+                    dict[n]= ++dict[n];
+            }
+            for (int i = 0; i < length; i++)
+            {
+                int count = 0;
+                foreach (var pair in dict)
+                {
+                    if (pair.Key < nums[i])
+                        count += pair.Value;
+                }
+                res[i] = count;
+            }
+            return res;
+        }
+        //1684. 统计一致字符串的数目
+        public int CountConsistentStrings(string allowed, string[] words)
+        {
+            int sum = 0;
+            foreach (var word in words)
+            {
+                for (int i = 0; i < word.Length; i++)
+                {
+                    if (!allowed.Contains(word[i]))
+                        break;
+                    if (i == word.Length - 1)
+                        sum++;
+                }
+            }
+            return sum;
+        }
         //1389. 按既定顺序创建目标数组
         public int[] CreateTargetArray(int[] nums, int[] index)
         {

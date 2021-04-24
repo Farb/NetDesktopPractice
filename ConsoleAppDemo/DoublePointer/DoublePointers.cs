@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace ConsoleAppDemo.DoublePointer
 {
@@ -10,25 +11,74 @@ namespace ConsoleAppDemo.DoublePointer
     }
     class DoublePointers
     {
+        //剑指 Offer 58 - I. 翻转单词顺序
+        public string ReverseWords(string s)
+        {
+            if (string.IsNullOrEmpty(s)) return s;
+
+            s = s.TrimEnd();
+            int fast = s.Length - 1, slow = fast;
+            var sb = new StringBuilder();
+            while (fast >= 0)
+            {
+                //从后往前，找到第一个空格
+                while (fast >= 0 && s[fast] != ' ') fast--;
+                sb.Append(s[(fast + 1)..(slow + 1)] + " ");
+                //找到下一个非空格
+                while (fast >= 0 && s[fast] == ' ') fast--;
+                slow = fast;
+            }
+            return sb.ToString().TrimEnd();
+        }
+        //剑指 Offer 57. 和为 s 的两个数字
+        public int[] TwoSum(int[] nums, int target)
+        {
+            int left = 0, right = nums.Length - 1;
+            while (left < right)
+            {
+                if (nums[left] + nums[right] < target)
+                    left++;
+                else if (nums[left] + nums[right] > target)
+                    right--;
+                else
+                    return new int[] { nums[left], nums[right] };
+            }
+            return Array.Empty<int>();
+        }
+        //剑指 Offer 52. 两个链表的第一个公共节点
+        public ListNode GetIntersectionNode(ListNode headA, ListNode headB)
+        {
+            var la = headA;
+            var lb = headB;
+            while (la != lb)
+            {
+                la = la != null ? la.next : headB;
+                lb = lb != null ? lb.next : headA;
+            }
+            return la;
+        }
         //剑指 Offer 25. 合并两个排序的链表
         public ListNode MergeTwoLists(ListNode l1, ListNode l2)
         {
-            if (l1 == null || l2 == null)//有1个为空的就返回另一个不为空的链表
-                return l1 != null ? l1 : l2;
-            //int newHeadValue = Math.Min(l1.val, l2.val);
-            //ListNode result = new ListNode(newHeadValue);
-
-            //ListNode l = l1.val == newHeadValue ? l1.next : l1;//一个左链表一个右链表
-            //ListNode r = l2.val == newHeadValue ? l2.next : l2;
-            //while (l != null && r != null)
-            //{
-            //    if (l.val == r.val)
-            //    {
-            //        result.next=new ListNode(l.val)
-            //    }
-
-            //}
-            return null;
+            //初始化一个新合并链表，并加入第一个节点，称之为伪造节点
+            ListNode fake = new ListNode(0);
+            ListNode cur = fake;
+            while (l1 != null && l2 != null)
+            {
+                if (l1.val <= l2.val)
+                {
+                    cur.next = l1;
+                    l1 = l1.next;
+                }
+                else
+                {
+                    cur.next = l2;
+                    l2 = l2.next;
+                }
+                cur = cur.next;
+            }
+            cur.next = l1 != null ? l1 : l2;
+            return fake.next;//只需返回伪造节点之后的节点就行了
         }
         //剑指 Offer 22. 链表中倒数第 k 个节点
         public ListNode GetKthFromEnd(ListNode head, int k)
