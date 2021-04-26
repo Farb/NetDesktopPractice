@@ -7,6 +7,35 @@ namespace ConsoleAppDemo.Problems.Easy
 {
     class EasyProblems
     {
+        //1313. 解压缩编码列表
+        public int[] DecompressRLElist(int[] nums)
+        {
+            var result = new List<int>();
+            for (int i = 0; i < nums.Length; i+=2)
+            {
+                int freq = nums[i];
+                int value = nums[i + 1];
+                for (int j = 0; j < freq; j++)
+                {
+                    result.Add(value);
+                }
+            }
+            return result.ToArray();
+        }
+        //1342. 将数字变成 0 的操作次数
+        public int NumberOfSteps(int num)
+        {
+            int count = 0;
+            while (num>0)
+            {
+                if ((num & 1) == 0)//偶数
+                    num /= 2;
+                else
+                    num -= 1;
+                count++;
+            }
+            return count;
+        }
         //1365. 有多少小于当前数字的数字
         public int[] SmallerNumbersThanCurrent(int[] nums)
         {
