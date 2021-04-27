@@ -5,13 +5,65 @@ using System.Text;
 
 namespace ConsoleAppDemo.Problems.Easy
 {
+    public class TreeNode
+    {
+        public int val;
+        public TreeNode left;
+        public TreeNode right;
+        public TreeNode(int x) { val = x; }
+    }
     class EasyProblems
     {
+        //1662. 检查两个字符串数组是否相等
+        public bool ArrayStringsAreEqual(string[] word1, string[] word2)
+        {
+            string str1 = string.Concat(word1);
+            string str2 = string.Concat(word2);
+            return str1 == str2;
+        }
+        //1827. 最少操作使数组递增
+        public int MinOperations(int[] nums)
+        {
+            if (nums.Length <= 1) return 0;
+            int count = 0;
+            for (int i = 1; i < nums.Length; i++)
+            {
+                if (nums[i - 1] >= nums[i])
+                {
+                    count += nums[i - 1] + 1 - nums[i];
+                    nums[i] = nums[i - 1] + 1;
+                }
+            }
+            return count;
+        }
+        //938. 二叉搜索树的范围和
+        public int RangeSumBST(TreeNode root, int low, int high)
+        {
+            int sum = 0;
+            Dfs(root);
+
+            void Dfs(TreeNode node)
+            {
+                if (node is null) return;
+ 
+                if (node.val < low)
+                    Dfs(node.right);
+                else if(node.val > high)
+                    Dfs(node.left);
+                else
+                {
+                    sum += node.val;
+                    Dfs(node.left);
+                    Dfs(node.right);
+                }
+            }
+            return sum;
+        }
         //1313. 解压缩编码列表
         public int[] DecompressRLElist(int[] nums)
         {
             var result = new List<int>();
-            for (int i = 0; i < nums.Length; i+=2)
+            for (int i = 0; i < nums.Length; i += 2)
             {
                 int freq = nums[i];
                 int value = nums[i + 1];
@@ -26,7 +78,7 @@ namespace ConsoleAppDemo.Problems.Easy
         public int NumberOfSteps(int num)
         {
             int count = 0;
-            while (num>0)
+            while (num > 0)
             {
                 if ((num & 1) == 0)//偶数
                     num /= 2;
@@ -61,7 +113,7 @@ namespace ConsoleAppDemo.Problems.Easy
                 if (!dict.ContainsKey(n))
                     dict.Add(n, 1);
                 else
-                    dict[n]= ++dict[n];
+                    dict[n] = ++dict[n];
             }
             for (int i = 0; i < length; i++)
             {
@@ -104,10 +156,10 @@ namespace ConsoleAppDemo.Problems.Easy
         //1281. 整数的各位积和之差
         public int SubtractProductAndSum(int n)
         {
-            int multiply = 1,sum=0,tmp=0;
-            while (n>0)
+            int multiply = 1, sum = 0, tmp = 0;
+            while (n > 0)
             {
-                tmp=n % 10;
+                tmp = n % 10;
                 n /= 10;
                 multiply *= tmp;
                 sum += tmp;
