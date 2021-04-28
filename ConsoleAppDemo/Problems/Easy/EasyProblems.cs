@@ -5,6 +5,12 @@ using System.Text;
 
 namespace ConsoleAppDemo.Problems.Easy
 {
+    public class ListNode
+    {
+        public int val;
+        public ListNode next;
+        public ListNode(int x) { val = x; }
+    }
     public class TreeNode
     {
         public int val;
@@ -14,6 +20,46 @@ namespace ConsoleAppDemo.Problems.Easy
     }
     class EasyProblems
     {
+        //1290. 二进制链表转整数
+        public int GetDecimalValue(ListNode head)
+        {
+            //v1
+            //var list = new List<int>();
+            //while (head!=null)
+            //{
+            //    list.Add(head.val);
+            //    head = head.next;
+            //}
+            //return Convert.ToInt32(string.Concat(list),fromBase:2);
+
+            //v2
+            int anwser = 0;
+            while (head != null)
+            {
+                anwser <<= 1;
+                anwser |= head.val;
+                head = head.next;
+            }
+            return anwser;
+        }
+        //1295. 统计位数为偶数的数字
+        public int FindNumbers(int[] nums)
+        {
+            int sum = 0;
+            for (int i = 0; i < nums.Length; i++)
+            {
+                int num = nums[i];
+                int counter = 0;
+                while (num > 0)
+                {
+                    num /= 10;
+                    counter++;
+                }
+                if ((counter & 1) == 0)
+                    sum++;
+            }
+            return sum;
+        }
         //1662. 检查两个字符串数组是否相等
         public bool ArrayStringsAreEqual(string[] word1, string[] word2)
         {
@@ -45,10 +91,10 @@ namespace ConsoleAppDemo.Problems.Easy
             void Dfs(TreeNode node)
             {
                 if (node is null) return;
- 
+
                 if (node.val < low)
                     Dfs(node.right);
-                else if(node.val > high)
+                else if (node.val > high)
                     Dfs(node.left);
                 else
                 {
