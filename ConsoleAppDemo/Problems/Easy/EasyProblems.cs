@@ -20,6 +20,32 @@ namespace ConsoleAppDemo.Problems.Easy
     }
     class EasyProblems
     {
+        //1572. 矩阵对角线元素的和
+        public int DiagonalSum(int[][] mat)
+        {
+            //v1
+            //int sum = 0;
+            //for (int i = 0; i < mat.Length; i++)
+            //{
+            //    for (int j = 0; j < mat.Length; j++)
+            //    {
+            //        if (i == j || i + j == mat.Length - 1)
+            //            sum += mat[i][j];
+            //    }
+            //}
+            //return sum;
+
+            //v2
+            var sum = 0;
+            for (int i = 0; i < mat.Length; i++)
+            {
+                sum += mat[i][i] + mat[i][mat.Length - 1 - i];
+            }
+            //如果矩阵有奇数行的话，应该减去中间重复计算的元素
+            int mid = mat.Length / 2;
+            sum -= mat[mid][mid] * (mat.Length & 1);
+            return sum;
+        }
         //1290. 二进制链表转整数
         public int GetDecimalValue(ListNode head)
         {
