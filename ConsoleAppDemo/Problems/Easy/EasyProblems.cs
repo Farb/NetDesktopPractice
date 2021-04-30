@@ -20,6 +20,62 @@ namespace ConsoleAppDemo.Problems.Easy
     }
     class EasyProblems
     {
+        //剑指 Offer 59 - I. 滑动窗口的最大值
+        public int[] MaxSlidingWindow(int[] nums, int k)
+        {
+            var result = new List<int>();
+            if (nums.Length <= 0) return result.ToArray();
+
+            for (int i = 0; i < nums.Length - k + 1; i++)
+            {
+                result.Add(nums[i..(i + k)].Max());
+            }
+            return result.ToArray();
+        }
+        //1688. 比赛中的配对次数
+        public int NumberOfMatches(int n)
+        {
+            int count = 0;
+            while (n != 1)
+            {
+                if ((n & 1) == 0)
+                {
+                    n /= 2;
+                    count += n;
+                }
+                else
+                {
+                    n = (n - 1) / 2 + 1;
+                    count += (n - 1) / 2;
+                }
+            }
+            return count;
+        }
+        //1450. 在既定时间做作业的学生人数
+        public int BusyStudent(int[] startTime, int[] endTime, int queryTime)
+        {
+            int length = startTime.Length;
+            int count = 0;
+            for (int i = 0; i < length; i++)
+            {
+                if (startTime[i] <= queryTime && queryTime <= endTime[i])
+                    count++;
+            }
+            return count;
+        }
+        //137. 只出现一次的数字 II
+        public int SingleNumber(int[] nums)
+        {
+            var dict = new Dictionary<int, int>();
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if (!dict.ContainsKey(nums[i]))
+                    dict.Add(nums[i], 1);
+                else
+                    dict[nums[i]] += 1;
+            }
+            return dict.Where(d => d.Value == 1).Select(d => d.Key).FirstOrDefault();
+        }
         //1572. 矩阵对角线元素的和
         public int DiagonalSum(int[][] mat)
         {
